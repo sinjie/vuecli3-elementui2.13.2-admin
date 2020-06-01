@@ -3,15 +3,51 @@ import Router from 'vue-router'
 
 Vue.use(Router)
 
+/* Layout */
+import Layout from '@/views/layout/Layout'
+
 export const defaultRoutes = [
   {
-    path: '*',
-    redirect: '/home'
+    path: '/',
+    name: 'home',
+    component: Layout,
+    redirect: '/index',
+    meta: {
+      title: '首页',
+      icon: 'chart'
+    },
+    children: [{
+      path: '/index',
+      component: () => import('@/views/Home/home'),
+    },
+    ]
   },
   {
-    path: '/home',
-    name: 'home',
-    component: () => import ('@/views/Home/home'),
+    path: '/user',
+    component: Layout,
+    redirect: '/user',
+    name:'user',
+    meta: {
+      title: '用户管理',
+      icon: 'chart'
+    },
+    children: [{
+      path: '/user',
+      name: 'usermange',
+      meta: {
+        title: '用户管理',
+      },
+      component: () => import('@/views/User/user'),
+    },
+    {
+      path: '/level',
+      name: 'level',
+      meta: {
+        title: '等级管理',
+      },
+      component: () => import('@/views/User/level'),
+    }
+    ]
   }
 ]
 
