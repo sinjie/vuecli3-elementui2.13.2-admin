@@ -1,6 +1,6 @@
 <template>
-  <div>
-    首页
+  <div class="layoutLogin">
+      <router-view></router-view>
   </div>
 </template>
 <script>
