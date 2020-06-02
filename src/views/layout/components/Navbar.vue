@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="nav">
     <el-breadcrumb class="app-breadcrumb" separator="/">
       <transition-group name="breadcrumb">
         <el-breadcrumb-item v-for="(item, index) in levelList" :key="item.name">
@@ -60,4 +60,13 @@ export default {
 };
 </script>
 <style lang='scss' scoped>
+.nav {
+  position: fixed;
+  top: 60px;
+  left: 180px;
+  right: 0;
+  min-width: 1180px;
+  padding: 10px;
+  box-shadow: 0 2px 5px rgba(#456, .2);
+}
 </style>

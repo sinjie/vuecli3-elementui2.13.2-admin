@@ -34,15 +34,12 @@ export const defaultRoutes = [
         component: () => import("@/views/layoutLogin/components/login"),
       },
     ],
-    hidden: true
+    hidden: true,
   },
-]
-
-export const asyncRoutes = [
   {
     path: "/user",
     component: Layout,
-    redirect: "/user",
+    redirect: "/user/index",
     name: "user",
     meta: {
       title: "用户管理",
@@ -50,7 +47,7 @@ export const asyncRoutes = [
     },
     children: [
       {
-        path: "/user",
+        path: "index",
         name: "usermange",
         meta: {
           title: "用户管理",
@@ -58,7 +55,7 @@ export const asyncRoutes = [
         component: () => import("@/views/User/user"),
       },
       {
-        path: "/level",
+        path: "level",
         name: "level",
         meta: {
           title: "等级管理",
@@ -68,6 +65,8 @@ export const asyncRoutes = [
     ],
   },
 ]
+
+export const asyncRoutes = []
 
 export default new Router({
   routes: defaultRoutes,

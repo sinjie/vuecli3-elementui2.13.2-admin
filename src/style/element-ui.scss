@@ -1,0 +1,34 @@
+.sidebar .el-menu {
+  border: none;
+  background: #456;
+
+  .el-menu-item,  .el-menu-item i{
+    color: #fff;
+
+    &.is-active {
+      background: #456;
+      color: #8df;
+    }
+    
+    &:hover {
+      background: #234;
+    }
+  }
+  .el-submenu .el-menu {
+    background: #345;
+
+    .el-menu-item.is-active {
+      background: #345;
+      color: #8df;
+    }
+  }
+
+  .el-submenu__title,  .el-submenu__title i {
+    color: #fff;
+
+    &:hover {
+      background: #234;
+    }
+  }
+
+}

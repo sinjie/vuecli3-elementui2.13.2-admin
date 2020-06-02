@@ -1,5 +1,5 @@
 <template>
-  <el-row class="tac">
+  <el-row class="sidebar">
     <el-col>
       <el-menu
         default-active="2"
@@ -10,19 +10,21 @@
       >
         <div v-for="(route,index) in defaultRoutes" :key="index">
           <!-- {{route.meta.title}} -->
-          <el-menu-item v-if="route.children.length==1" :index="route.name" @select="routepsuh(route.name)">
-            <i class="el-icon-menu"></i>
-            <span slot="title" >{{route.meta.title}}</span>
-          </el-menu-item>
-          <el-submenu v-else :index="route.name">
-            <template slot="title">
-              <i class="el-icon-location"></i>
-              <span>{{route.meta.title}}</span>
-            </template>
-            <el-menu-item-group v-for="(i,j) in route.children" :key="j+i.name">
-              <el-menu-item :index="i.name" @select="routepsuh(i.name)">{{i.meta.title}}</el-menu-item>
-            </el-menu-item-group>
-          </el-submenu>
+          <div v-if="!route.hidden">
+            <el-menu-item v-if="route.children.length == 1" :index="route.name" @select="routepsuh(route.name)">
+              <i class="el-icon-menu"></i>
+              <span slot="title" >{{route.meta.title}}</span>
+            </el-menu-item>
+            <el-submenu v-else :index="route.name">
+              <template slot="title">
+                <i class="el-icon-location"></i>
+                <span>{{route.meta.title}}</span>
+              </template>
+              <el-menu-item-group v-for="(i,j) in route.children" :key="j+i.name">
+                <el-menu-item :index="i.name" @select="routepsuh(i.name)">{{i.meta.title}}</el-menu-item>
+              </el-menu-item-group>
+            </el-submenu>
+          </div>
         </div>
       </el-menu>
     </el-col>
@@ -56,4 +58,9 @@ export default {
 };
 </script>
 <style lang='scss' scoped>
+.sidebar {
+  min-height: 100%;
+  border-right: solid 1px #e6e6e6;
+  background: #456;
+}
 </style>
