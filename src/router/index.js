@@ -5,6 +5,8 @@ Vue.use(Router)
 
 /* Layout */
 import Layout from '@/views/layout/Layout'
+import LayoutLogin from '@/views/LayoutLogin/LayoutLogin'
+
 
 export const defaultRoutes = [
   {
@@ -19,6 +21,16 @@ export const defaultRoutes = [
     children: [{
       path: '/index',
       component: () => import('@/views/Home/home'),
+    },
+    ]
+  },
+  {
+    path: '/login',
+    name: 'login',
+    component: LayoutLogin,
+    children: [{
+      path: '/login',
+      component: () => import('@/views/LayoutLogin/components/login'),
     },
     ]
   },
