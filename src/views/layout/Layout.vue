@@ -1,13 +1,13 @@
 <template>
   <el-container  class="app-wrapper">
-    <el-header>
+    <el-header class="header">
       <headbar />
     </el-header>
-    <el-container>
-      <el-aside width="200px">
+    <el-container class="main">
+      <el-aside width="180px">
         <Sidebar />
       </el-aside>
-      <div>
+      <div class="app-container">
         <navbar />
         <app-main />
       </div>
@@ -35,11 +35,25 @@ export default {
 };
 </script>
 <style lang='scss' scoped>
-.el-header{
-    background-color: #B3C0D1;
-    color: #fff;
-	}
-.el-aside{
+.header {
+  position: fixed;
+  z-index: 10000;
+  width: 100%;
+  min-width: 1400px;
+  color: #fff;
+  background: linear-gradient( #123,  #456);
+}
 
+.main {
+  padding-top: 60px;
+  height: 100vh;
+}
+
+.app-container {
+  padding: 44px 0 20px;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #fff;
 }
 </style>
