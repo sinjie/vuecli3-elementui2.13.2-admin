@@ -5,7 +5,7 @@ Vue.use(Router)
 
 /* Layout */
 import Layout from '@/views/layout/Layout'
-import LayoutLogin from '@/views/LayoutLogin/LayoutLogin'
+import layoutLogin from '@/views/layoutLogin/layoutLogin'
 
 
 export const defaultRoutes = [
@@ -27,10 +27,10 @@ export const defaultRoutes = [
   {
     path: '/login',
     name: 'login',
-    component: LayoutLogin,
+    component: layoutLogin,
     children: [{
       path: '/login',
-      component: () => import('@/views/LayoutLogin/components/login'),
+      component: () => import('@/views/layoutLogin/components/login'),
     },
     ]
   },
