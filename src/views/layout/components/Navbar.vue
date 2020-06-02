@@ -62,11 +62,13 @@ export default {
 <style lang='scss' scoped>
 .nav {
   position: fixed;
+  z-index: 9999;
   top: 60px;
   left: 180px;
   right: 0;
   min-width: 1180px;
   padding: 10px;
+  background: #fdfdfe;
   box-shadow: 0 2px 5px rgba(#456, .2);
 }
 </style>

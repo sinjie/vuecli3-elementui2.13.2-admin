@@ -64,6 +64,146 @@ export const defaultRoutes = [
       },
     ],
   },
+  {
+    path: "/user1",
+    component: Layout,
+    redirect: "/user1/index",
+    name: "user1",
+    meta: {
+      title: "用户管理",
+      icon: "chart",
+    },
+    children: [
+      {
+        path: "index",
+        name: "usermange",
+        meta: {
+          title: "用户管理",
+        },
+        component: () => import("@/views/User/user"),
+      },
+      {
+        path: "level",
+        name: "level",
+        meta: {
+          title: "等级管理",
+        },
+        component: () => import("@/views/User/level"),
+      },
+    ],
+  },
+  {
+    path: "/user2",
+    component: Layout,
+    redirect: "/user2/index",
+    name: "user2",
+    meta: {
+      title: "用户管理",
+      icon: "chart",
+    },
+    children: [
+      {
+        path: "index",
+        name: "usermange",
+        meta: {
+          title: "用户管理",
+        },
+        component: () => import("@/views/User/user"),
+      },
+      {
+        path: "level",
+        name: "level",
+        meta: {
+          title: "等级管理",
+        },
+        component: () => import("@/views/User/level"),
+      },
+    ],
+  },
+  {
+    path: "/user3",
+    component: Layout,
+    redirect: "/user3/index",
+    name: "user3",
+    meta: {
+      title: "用户管理",
+      icon: "chart",
+    },
+    children: [
+      {
+        path: "index",
+        name: "usermange",
+        meta: {
+          title: "用户管理",
+        },
+        component: () => import("@/views/User/user"),
+      },
+      {
+        path: "level",
+        name: "level",
+        meta: {
+          title: "等级管理",
+        },
+        component: () => import("@/views/User/level"),
+      },
+    ],
+  },
+  {
+    path: "/user4",
+    component: Layout,
+    redirect: "/user4/index",
+    name: "user4",
+    meta: {
+      title: "用户管理",
+      icon: "chart",
+    },
+    children: [
+      {
+        path: "index",
+        name: "usermange",
+        meta: {
+          title: "用户管理",
+        },
+        component: () => import("@/views/User/user"),
+      },
+      {
+        path: "level",
+        name: "level",
+        meta: {
+          title: "等级管理",
+        },
+        component: () => import("@/views/User/level"),
+      },
+    ],
+  },
+  {
+    path: "/user5",
+    component: Layout,
+    redirect: "/user5/index",
+    name: "user5",
+    meta: {
+      title: "用户管理",
+      icon: "chart",
+    },
+    children: [
+      {
+        path: "index",
+        name: "usermange",
+        meta: {
+          title: "用户管理",
+        },
+        component: () => import("@/views/User/user"),
+      },
+      {
+        path: "level",
+        name: "level",
+        meta: {
+          title: "等级管理",
+        },
+        component: () => import("@/views/User/level"),
+      },
+    ],
+  },
 ]
 
 export const asyncRoutes = []

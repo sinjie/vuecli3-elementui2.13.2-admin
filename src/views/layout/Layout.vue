@@ -46,11 +46,14 @@ export default {
 
 .main {
   padding-top: 60px;
-  min-height: 100vh;
+  height: 100vh;
 }
 
 .app-container {
-  padding: 50px 20px 20px;
+  padding: 44px 0 20px;
   width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #fff;
 }
 </style>
