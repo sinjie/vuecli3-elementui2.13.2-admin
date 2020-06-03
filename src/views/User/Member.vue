@@ -1,17 +1,22 @@
 <template>
   <div>
-    <p>等级管理</p>
+    会员管理
   </div>
 </template>
 <script>
 export default {
   components: {},
   data() {
-    return {};
+    return {
+      
+    }
   },
   created() {},
-  methods: {}
-};
+  methods: {
+    
+  }
+}
 </script>
 <style lang='scss' scoped>
+
 </style>

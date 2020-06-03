@@ -1,6 +1,6 @@
 <template>
     <div>
-        <p>会员管理</p>
+        <p>提笔管理</p>
     </div>
 </template>
 <script>
