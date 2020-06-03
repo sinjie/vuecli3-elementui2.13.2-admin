@@ -4,7 +4,7 @@
       <el-select></el-select>
       <el-input placeholder="请输入名称"></el-input>
       <template v-slot:rightButtons>
-        <el-button>导出</el-button>
+        <el-button @click="testDownload">导出</el-button>
         <el-button type="primary">新增</el-button>
       </template>
     </search-line>
@@ -13,6 +13,7 @@
 </template>
 <script>
 import searchLine from "../../components/searchLine";
+import { confirm } from "../../utils/components";
 
 export default {
   components: {searchLine},
@@ -234,6 +235,9 @@ export default {
     },
     changeTablePage(currentPage) {
 
+    },
+    testDownload() {
+      confirm('是否确定导出？')
     },
   }
 }
