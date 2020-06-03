@@ -2,14 +2,15 @@
   border: none;
   background: #456;
 
-  .el-menu-item,  .el-menu-item i{
+  .el-menu-item,
+  .el-menu-item i {
     color: #fff;
 
     &.is-active {
       background: #456;
       color: #8df;
     }
-    
+
     &:hover {
       background: #234;
     }
@@ -23,12 +24,26 @@
     }
   }
 
-  .el-submenu__title,  .el-submenu__title i {
+  .el-submenu__title,
+  .el-submenu__title i {
     color: #fff;
 
     &:hover {
       background: #234;
     }
   }
+}
 
+.el-table {
+  .table-header-cell {
+    background: #f0f1f5;
+    color: #000;
+  }
+}
+
+.search-line {
+  .el-select, .el-input {
+    width: 200px;
+    margin-right: 8px;
+  }
 }
