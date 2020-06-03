@@ -39,9 +39,9 @@ export default {
   position: fixed;
   z-index: 10000;
   width: 100%;
-  min-width: 1400px;
+  min-width: 1300px;
   color: #fff;
-  background: linear-gradient( #123,  #456);
+  background: linear-gradient( #123,  #345);
 }
 
 .main {
