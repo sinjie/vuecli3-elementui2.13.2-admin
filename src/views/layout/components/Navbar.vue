@@ -66,7 +66,7 @@ export default {
   top: 60px;
   left: 180px;
   right: 0;
-  min-width: 1180px;
+  min-width: 1120px;
   padding: 10px;
   background: #fdfdfe;
   box-shadow: 0 2px 5px rgba(#456, .2);
