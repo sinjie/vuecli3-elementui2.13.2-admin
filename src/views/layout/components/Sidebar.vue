@@ -2,11 +2,11 @@
   <el-row class="sidebar">
     <el-col>
       <el-menu
-        default-active="2"
+        :default-active="defaultActive"
         class="el-menu-vertical-demo"
         @open="handleOpen"
         @close="handleClose"
-        @select="routepsuh"
+        @select="routepush"
       >
         <div v-for="(route, index) in defaultRoutes" :key="index">
           <!-- {{route.meta.title}} -->
@@ -14,7 +14,7 @@
             <el-menu-item
               v-if="route.children.length == 1"
               :index="route.name"
-              @select="routepsuh(route.name)"
+              @select="routepush(route.name)"
             >
               <i class="el-icon-menu"></i>
               <span slot="title">{{ route.meta.title }}</span>
@@ -28,7 +28,7 @@
                 v-for="(i, j) in route.children"
                 :key="j + i.name"
               >
-                <el-menu-item :index="i.name" @select="routepsuh(i.name)">{{
+                <el-menu-item :index="i.name" @select="routepush(i.name)">{{
                   i.meta.title
                 }}</el-menu-item>
               </el-menu-item-group>
@@ -46,10 +46,23 @@ export default {
   data() {
     return {
       defaultRoutes,
+      defaultActive: 'home'
     }
   },
   created() {
     console.log(defaultRoutes)
+    if (this.$route.name) {
+      this.defaultActive = this.$route.name
+    }else {
+      let matched = this.$route.matched
+      for (let i = matched.length - 1; i >= 0; i--) {
+        if (matched[i].name) {
+          this.defaultActive = matched[i].name
+          return
+        }
+      }
+    }
+
   },
   methods: {
     handleOpen(key, keyPath) {
@@ -58,7 +71,7 @@ export default {
     handleClose(key, keyPath) {
       console.log(key, keyPath)
     },
-    routepsuh(e) {
+    routepush(e) {
       this.$router.push({
         name: e,
       })
