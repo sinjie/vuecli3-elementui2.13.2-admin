@@ -9,6 +9,9 @@
     &.is-active {
       background: #456;
       color: #8df;
+      i {
+        color: #8df;
+      }
     }
 
     &:hover {
@@ -21,6 +24,10 @@
     .el-menu-item.is-active {
       background: #345;
       color: #8df;
+
+      i {
+        color: #8df;
+      }
     }
   }
 

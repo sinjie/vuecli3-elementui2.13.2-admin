@@ -75,7 +75,6 @@ export const defaultRoutes = [
   {
     path: "/order",
     component: Layout,
-    redirect: "/order/index",
     name: "order",
     meta: {
       title: "订单管理",
@@ -83,7 +82,7 @@ export const defaultRoutes = [
     },
     children: [
       {
-        path: "index",       
+        path: "",       
         component: () => import("@/views/Order/Order"),
       }    
     ],
