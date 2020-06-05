@@ -86,7 +86,7 @@ export default {
   border-right: solid 1px #e6e6e6;
   background: #456;
   position: relative;
-  z-index: 9999;
+  z-index: 999;
 }
 /*定义滚动条高宽及背景 高宽分别对应横竖滚动条的尺寸*/
 ::-webkit-scrollbar {

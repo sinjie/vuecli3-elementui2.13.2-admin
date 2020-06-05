@@ -318,6 +318,16 @@ export default {
       console.log('-------------- closeAddDialog: ', );
     },
     clickTabelBtns(row, btn) {
+      console.log('-------------- : ', this.$message);
+      if (btn.name == 'del') {
+        this.$message.error('错误提示')
+      }
+      if (btn.name == 'edit') {
+        this.$message.success('成功提示')
+      }
+      if (btn.name == 'show') {
+        this.$message.warning('警告提示')
+      }
       console.log('-------------- clickTabelBtns: ', row, btn);
     },
     changeTableSelect(selection) {
