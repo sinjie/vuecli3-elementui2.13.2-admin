@@ -9,7 +9,6 @@
         @select="routepush"
       >
         <div v-for="(route, index) in defaultRoutes" :key="index">
-          <!-- {{route.meta.title}} -->
           <div v-if="!route.hidden">
             <el-menu-item
               v-if="route.children.length == 1"
@@ -28,9 +27,12 @@
                 v-for="(i, j) in route.children"
                 :key="j + i.name"
               >
-                <el-menu-item :index="i.name" @select="routepush(i.name)">{{
-                  i.meta.title
-                }}</el-menu-item>
+                <el-menu-item
+                  v-if="!i.hidden"
+                  :index="i.name"
+                  @select="routepush(i.name)"
+                  >{{ i.meta.title }}</el-menu-item
+                >
               </el-menu-item-group>
             </el-submenu>
           </div>
@@ -46,14 +48,13 @@ export default {
   data() {
     return {
       defaultRoutes,
-      defaultActive: 'home'
+      defaultActive: "home",
     }
   },
   created() {
-    console.log(defaultRoutes)
     if (this.$route.name) {
       this.defaultActive = this.$route.name
-    }else {
+    } else {
       let matched = this.$route.matched
       for (let i = matched.length - 1; i >= 0; i--) {
         if (matched[i].name) {
@@ -62,16 +63,21 @@ export default {
         }
       }
     }
-
   },
   methods: {
-    handleOpen(key, keyPath) {
-      console.log(key, keyPath)
-    },
-    handleClose(key, keyPath) {
-      console.log(key, keyPath)
-    },
+    handleOpen(key, keyPath) {},
+    handleClose(key, keyPath) {},
     routepush(e) {
+      if (this.$route.name && e === this.$route.name) return
+      if (this.$route.name === undefined) {
+        let matched = this.$route.matched
+        for (let i = matched.length - 1; i >= 0; i--) {
+          if (matched[i].name === e) {
+            return
+          }
+        }
+      }
+
       this.$router.push({
         name: e,
       })
