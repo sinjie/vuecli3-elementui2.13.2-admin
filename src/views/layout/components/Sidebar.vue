@@ -11,7 +11,7 @@
         <div v-for="(route, index) in defaultRoutes" :key="index">
           <div v-if="!route.hidden">
             <el-menu-item
-              v-if="route.children.length == 1"
+              v-if="route.children.filter(one => !one.hidden).length == 1"
               :index="route.name"
               @select="routepush(route.name)"
             >

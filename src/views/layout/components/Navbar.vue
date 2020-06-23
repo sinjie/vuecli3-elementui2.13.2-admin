@@ -63,8 +63,8 @@ export default {
 .nav {
   position: fixed;
   z-index: 999;
-  top: 60px;
-  left: 180px;
+  top: 48px;
+  left: 160px;
   right: 0;
   min-width: 1120px;
   padding: 10px;

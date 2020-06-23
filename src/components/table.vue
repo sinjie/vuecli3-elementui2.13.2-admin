@@ -1,6 +1,13 @@
 <template>
-  <div class="w-100">
-    <el-table class="w-100" :data="data" stripe header-cell-class-name="table-header-cell" @selection-change="changeSelect">
+  <div class="w-100 flex-column flex-1 overflow-hidden">
+    <el-table
+      class="w-100 flex-1"
+      :data="data"
+      :height="height"
+      stripe
+      header-cell-class-name="table-header-cell"
+      @selection-change="changeSelect"
+    >
       <el-table-column
         v-if="hasSelection"
         fixed="left"
@@ -9,26 +16,52 @@
       ></el-table-column>
       <el-table-column
         v-for="(col, index) in columns"
+        show-overflow-tooltip
         :label="col.label"
         :key="col.prop + index"
         :width="col.width"
       >
         <template slot-scope="scope">
-          <div v-if="col.type=='switch'">
+          <div v-if="col.type == 'switch'">
             <el-switch
               v-model="scope.row[col.prop]"
               active-color="#13ce66"
               inactive-color="#ff4949"
-              @change="$emit('clickBtn', scope.row, {name:col.type,prop:col.prop})"
+              @change="$emit('clickBtn', scope.row, {name:col.type,prop:col.prop})" 
+              active-value="1"
+              inactive-value="0"
             ></el-switch>
           </div>
-          <div v-else-if="col.type=='number'">
-            <el-input-number v-model="scope.row[col.prop]"  @change="$emit('clickBtn', scope.row, {name:col.type,prop:col.prop})" :min="1" :max="10" ></el-input-number>
+          <div v-else-if="col.type == 'switchStatus'">
+            <el-switch
+              v-model="scope.row[col.prop]"
+              active-color="#13ce66"
+              inactive-color="#ff4949"
+              @change="$emit('clickBtn', scope.row, {name:col.type,prop:col.prop})" 
+              active-value="1"
+              inactive-value="0"
+              :disabled="scope.row[col.prop]==1"
+            ></el-switch>
           </div>
-          <div v-else-if="col.type=='selectData'">
-            {{getSelectItem(col.selectData, scope.row[col.prop])}}
+          <div v-else-if="col.type == 'number'">
+            <el-input-number
+              v-model="scope.row[col.prop]"
+              @change="
+                $emit('clickBtn', scope.row, { name: col.type, prop: col.prop })
+              "
+              :min="1"
+              :max="10"
+              size="mini"
+              :precision="0"
+            ></el-input-number>
           </div>
-          <div v-else>{{scope.row[col.prop]}}</div>
+          <div v-else-if="col.type == 'selectData'">
+            {{ getSelectItem(col.selectData, scope.row[col.prop]) }}
+          </div>
+          <div v-else-if="col.type == 'image'">
+            <img class="td__image" :src="scope.row[col.prop]" />
+          </div>
+          <div v-else>{{ scope.row[col.prop] }}</div>
         </template>
       </el-table-column>
       <el-table-column
@@ -38,18 +71,19 @@
         label="操作"
       >
         <template slot-scope="scope">
-          <el-button
-            v-for="btn in operating"
-            v-show="btn.show ? btn.show(scope.row) : true"
-            :key="btn.name"
-            :type="btn.type || 'text'"
-            :disabled="btn.disabled ? btn.disabled(scope.row) : false"
-            @click="$emit('clickBtn', scope.row, btn)"
-          >{{ btn.label }}</el-button>
+          <span v-for="btn in operating" :key="btn.name" class="table-operation__btn">
+            <el-button
+              v-if="btn.show ? btn.show(scope.row) : true"
+              :type="btn.type || 'text'"
+              :disabled="btn.disabled ? btn.disabled(scope.row) : false"
+              @click="$emit('clickBtn', scope.row, btn)"
+              >{{ btn.label }}</el-button
+            >
+          </span>
         </template>
       </el-table-column>
     </el-table>
-    <div class="mt-16" v-if="hasPagination">
+    <div class="mt-16 overflow-hidden" v-if="hasPagination">
       <el-pagination
         class="pagination"
         @current-change="changePage"
@@ -93,40 +127,44 @@
 export default {
   components: {},
   props: {
+    height: {
+      type: String,
+      default: '446'
+    },
     data: {
       type: Array,
-      required: true
+      required: true,
     },
     columns: {
       type: Array,
-      required: true
+      required: true,
     },
     hasSelection: {
       type: Boolean,
-      default: false
+      default: false,
     },
     hasPagination: {
       type: Boolean,
-      default: true
+      default: true,
     },
     pages: Object,
     operating: Array,
     operatingWidth: {
-      default: "140"
-    }
+      default: "140",
+    },
   },
   data() {
-    return {};
+    return {}
   },
   created() {},
   methods: {
     getSelectItem(data, val) {
       if (Array.isArray(data) && val !== undefined) {
-        let item = data.find(one => one.value === val)
+        let item = data.find((one) => one.value === val)
         if (item && item.label) {
           return item.label
         }
-        return '-'
+        return "-"
       }
       if (data === undefined) {
         console.error(`components/table.vue error: 当type="selectData"时，必须传入选项列表selectData数组，例：
@@ -154,19 +192,28 @@ export default {
           ]
         }`)
       }
-      return '-'
+      return "-"
     },
     changeSelect(selection) {
-      this.$emit('changeSelect', selection)
+      this.$emit("changeSelect", selection)
     },
     changePage(val) {
-      this.$emit('changePage', val)
-    }
-  }
-};
+      this.$emit("changePage", val)
+    },
+  },
+}
 </script>
 <style lang="scss" scoped>
 .pagination {
   float: right;
+}
+.table-operation__btn {
+  .el-button {
+    margin-right: 8px;
+  }
+}
+.td__image {
+  width: 120px;
+  vertical-align: middle;
 }
 </style>

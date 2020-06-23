@@ -1,10 +1,10 @@
 <template>
   <el-container  class="app-wrapper">
-    <el-header class="header">
+    <el-header class="header" height="48px">
       <headbar />
     </el-header>
     <el-container class="main">
-      <el-aside width="180px">
+      <el-aside width="160px">
         <Sidebar />
       </el-aside>
       <div class="app-container">
@@ -45,7 +45,7 @@ export default {
 }
 
 .main {
-  padding-top: 60px;
+  padding-top: 48px;
   height: 100vh;
 }
 

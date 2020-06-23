@@ -1,6 +1,6 @@
 <template>
   <div class="page-content">
-    <router-view></router-view>
+    <router-view class="flex-column h-100"></router-view>
   </div>
 </template>
 <script>
@@ -10,12 +10,15 @@ export default {
     return {}
   },
   created() {},
+  mounted(){
+    this.$store.dispatch('setSeriers','FIL')
+  },
   methods: {},
 }
 </script>
 <style lang="scss" scoped>
 .page-content {
-	overflow-y: auto;
+	overflow-y: hidden;
 	width: 100%;
 	height: 100%;
 	padding: 0 20px;
